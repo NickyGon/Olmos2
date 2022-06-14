@@ -1,0 +1,57 @@
+<div class="main">
+    <div class="form">
+        <h1>Registrate en el Sistema de Olmos</h1>
+        <div class="form-fill">
+            <form (submit)="onRegister()" [formGroup]="userForm">
+                <mat-form-field appearance="outline" class="example-half-width">
+                  <input matInput name="nombre" type="text" placeholder="Nombre" formControlName="nombre">
+                  <mat-error style="color:red" *ngIf=" userForm.get('nombre')?.errors?.['required']">Se requiere el nombre</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="example-half-width">
+                    <input matInput name="apellidos" type="text" placeholder="Apellidos" formControlName="apellidos">
+                    <mat-error style="color:red" *ngIf=" userForm.get('apellidos')?.errors?.['required']">Se requiere el apellido</mat-error>
+                  </mat-form-field>
+                <mat-form-field appearance="outline" class="example-half-width">
+                    <input matInput name="ci" type="text" placeholder="Carnet de Identidad" formControlName="ci">
+                    <mat-error style="color:red" *ngIf=" userForm.get('ci')?.errors?.['required']">Se requiere el Carnet de Identidad</mat-error>
+                    <mat-error style="color:red" *ngIf=" userForm.get('ci')?.errors?.['minlength']">El carnet debe tener 8 numeros de mínimo</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="example-half-width">
+                    <input matInput name="email"  type="email"placeholder="Correo electrónico" formControlName="email">
+                    <mat-error style="color:red" *ngIf=" userForm.get('email')?.errors?.['required']">Se requiere el email</mat-error>
+                    <mat-error style="color:red" *ngIf=" userForm.get('email')?.errors?.['email']">El email no es válido</mat-error>
+                </mat-form-field>
+
+                <p>   
+                    <div class="center">
+                        <mat-form-field appearance="outline" class="example-half-width">
+                            <input [type]="hide ? 'password' : 'text'" name="password" matInput placeholder="Contraseña" formControlName="password">
+                            <mat-icon matSuffix (click)="hide=!hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            <mat-error style="color:red" *ngIf=" userForm.get('password')?.errors?.['required']">Se requiere la contraseña</mat-error>
+                            <mat-error style="color:red" *ngIf=" userForm.get('password')?.errors?.['minlength']">La contraseña debe ser de 8 caracteres mínimo</mat-error>
+                          </mat-form-field>
+                    </div> 
+                  <hr>
+                  <div class="center">
+                    <mat-form-field appearance="outline" class="example-half-width">
+                        <input [type]="hide3 ? 'password' : 'text'" name="keyrole" matInput placeholder="Clave especial del hotel (no obligatorio)" formControlName="keyrole">
+                        <mat-icon matSuffix (click)="hide3=!hide3">{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </mat-form-field>
+                  </div>
+                <p>
+                    <div class="center">
+                        <a routerLink="/" >¿Tienes cuenta? ¡Inicia sesión!</a>
+                    </div>
+                <p>
+                    <div class="center">
+                        <button mat-raised-button class="btn" type="submit" >Registrate</button>
+                    </div>
+
+                    
+                
+            </form>
+        </div>
+       
+    </div>
+   
+</div>
